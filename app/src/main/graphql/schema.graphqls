@@ -1,0 +1,29 @@
+type Query {
+    allPeople(first:Int,after: String): PeopleConnection!
+    person(id:ID):Person
+}
+type PeopleConnection {
+    people:[Person]
+    totalCount:Int
+    pageInfo:PageInfo!
+}
+type  PageInfo {
+    hasNextPage:Boolean
+    endCursor:String
+}
+
+type Person {
+    gender: String
+    height: Int
+    id: ID!
+    name: String
+    mass: Float
+    homeworld: Planet
+}
+type Planet {
+    id: ID!
+    name:String
+}
+schema {
+    query: Query
+}

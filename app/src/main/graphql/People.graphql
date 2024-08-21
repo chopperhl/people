@@ -1,0 +1,32 @@
+query AllPeople($first: Int,$after: String) {
+    allPeople(first: $first,after: $after) {
+        totalCount
+        pageInfo {
+            endCursor
+            hasNextPage
+        }
+        people{
+            gender
+            height
+            id
+            name
+            mass
+            homeworld {
+                id
+                name
+            }
+        }
+    }
+}
+query Person($personId: ID) {
+    person(id: $personId) {
+        id
+        homeworld {
+            id
+            name
+        }
+        height
+        mass
+        name
+    }
+}
