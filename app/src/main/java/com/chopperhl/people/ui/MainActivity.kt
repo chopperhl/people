@@ -1,6 +1,7 @@
 package com.chopperhl.people.ui
 
 import android.os.Bundle
+import android.os.Parcel
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.tween
@@ -49,13 +50,15 @@ private fun MainNavHost() {
         enterTransition = {
             val isNavBack = this.targetState.destination.route == NavigationDestinations.PEOPLE_LIST
             val offset = if (isNavBack) -screenWidth else screenWidth
-            slideInHorizontally(animationSpec = tween(duration),
+            slideInHorizontally(
+                animationSpec = tween(duration),
                 initialOffsetX = { offset }) + fadeIn(animationSpec = tween(duration))
         },
         exitTransition = {
             val isNavBack = this.targetState.destination.route == NavigationDestinations.PEOPLE_LIST
             val offset = if (isNavBack) screenWidth else -screenWidth
-            slideOutHorizontally(animationSpec = tween(duration),
+            slideOutHorizontally(
+                animationSpec = tween(duration),
                 targetOffsetX = { offset }) + fadeOut(animationSpec = tween(duration))
         }) {
         composable(route = NavigationDestinations.PEOPLE_LIST) {
